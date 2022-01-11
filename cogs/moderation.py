@@ -35,8 +35,7 @@ from discord.ext.commands import has_permissions, CheckFailure
 
 
 class Moderation(commands.Cog):
-
-    def __init__(self,client):
+    def __init__(self, client):
         self.client = client
 
     def check_bad_words(self, content):
@@ -52,24 +51,20 @@ class Moderation(commands.Cog):
             return True
 
     def check_links(self, content):
-        pattern = re.compile(r'(http|ftp|https)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?')
+        pattern = re.compile(
+            r"(http|ftp|https)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?"
+        )
         matches = pattern.findall(content)
         if matches:
             return True
 
     def check_invites(self, content):
-        pattern = re.compile(r'(http|ftp|https)://[d][i][s][c][o][r][d]\.[g][g]/')
+        pattern = re.compile(r"(http|ftp|https)://[d][i][s][c][o][r][d]\.[g][g]/")
         mathces = pattern.findall(content)
         if mathces:
             return True
         else:
             return False
-
-
-
-
-
-
 
 
 def setup(client):
