@@ -21,7 +21,7 @@ class MyMenu(menus.Menu):
     @menus.button('1️⃣')
     async def on_one(self, payload):
         await self.message.edit(embed= first)
-        await message.message.remove_reaction("1️⃣")
+        await self.message.remove_reaction("1️⃣")
 
     @menus.button('2️⃣')
     async def on_two(self, payload):
@@ -228,31 +228,31 @@ async def invite(ctx):
 
 @client.command()
 async def byebye(ctx):
-goodbye = discord.Embed(title = "This is Goodbye.",
-description = "Mr. Wonka will officially be shut down today, for various reasons we.. I cannot disclose, so, i guess this is goodbye. The bot will be back though, but not anytime soon...",color = discord.Color.from_rgb(132,112,255))
-goodbye.set_footer(text = "Thank you to all those who used this bot\nAnd those who didn't, you missed out (i guess)")
-goodbye.add_field(name="Who am I?", value="Ohh, i'm Lushain#7914 btw.")
-goodbye.set_thumbnail(url= 'https://i.imgur.com/0YKdMjh.jpg')
-await ctx.send(embed = goodbye)
+    goodbye = discord.Embed(title = "This is Goodbye.",
+    description = "Mr. Wonka will officially be shut down today, for various reasons we.. I cannot disclose, so, i guess this is goodbye. The bot will be back though, but not anytime soon...",color = discord.Color.from_rgb(132,112,255))
+    goodbye.set_footer(text = "Thank you to all those who used this bot\nAnd those who didn't, you missed out (i guess)")
+    goodbye.add_field(name="Who am I?", value="Ohh, i'm Lushain#7914 btw.")
+    goodbye.set_thumbnail(url= 'https://i.imgur.com/0YKdMjh.jpg')
+    await ctx.send(embed = goodbye)
 
-for i in client.guilds:
-    channel = discord.utils.get(i.text_channels, name = "general")
-    NoneType = type(None)
-    if i.id in (844856727517003818 , 110373943822540800 , 765490568963948545):
-        pass
-
-    elif not isinstance(channel,NoneType):
-        try:
-            await channel.send(embed = goodbye)
-        except:
+    for i in client.guilds:
+        channel = discord.utils.get(i.text_channels, name = "general")
+        NoneType = type(None)
+        if i.id in (844856727517003818 , 110373943822540800 , 765490568963948545):
             pass
 
-    else:
-        channel = i.system_channel
-        try:
-            await channel.send(embed = goodbye)
-        except:
-            pass
+        elif not isinstance(channel,NoneType):
+            try:
+                await channel.send(embed = goodbye)
+            except:
+                pass
+
+        else:
+            channel = i.system_channel
+            try:
+                await channel.send(embed = goodbye)
+            except:
+                pass
 
 @client.command()
 async def privacy(ctx):
