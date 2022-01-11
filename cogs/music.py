@@ -192,7 +192,7 @@ class MusicController:
     ):
         if member == self.ctx.me:
             if before.channel is not None and after.channel is None:
-                return self.bot.loop.create_task(self.ctx.cog.cleanup(ctx))
+                return self.bot.loop.create_task(self.ctx.cog.cleanup(self.ctx))
 
 
 class Music(commands.Cog):
@@ -797,7 +797,7 @@ class Music(commands.Cog):
             return
 
         equaliser = wavelink.Equalizer.boost()
-        eq = equaliser.get(equalizer.lower(), None)
+        eq = equaliser.get(equaliser.lower(), None)
         await player.set_eq(equaliser)
 
     @commands.command(aliases=["eq"])
@@ -971,8 +971,8 @@ class Music(commands.Cog):
             a_num = -1
             for i in range(1, emb_count + 1):
                 a_num += 1
+                some_var = song[0 : e * i + 1]
                 if i == 1:
-                    some_var = song[0 : e * i + 1]
                     embed = discord.Embed(
                         title=f"Lyrics for {title}",
                         description=some_var,

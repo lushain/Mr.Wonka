@@ -32,7 +32,7 @@ class Moderator_commands(commands.Cog):
                 name="Muted", color=discord.Color.greyple()
             )
             for channel in ctx.guild.channels:
-                await channel.set_permissionmuted(Muted, send_messages=False)
+                await channel.set_permissions(muted_role, send_messages=False)
 
         else:
             pass
@@ -55,7 +55,7 @@ class Moderator_commands(commands.Cog):
     async def unmute(self, ctx, member: discord.Member):
         member.remove_roles(discord.utils.get(ctx.guild.roles, name="Muted"))
         ctx.message.add_reaction("👍")
-        channael = await member.create_dm()
+        channel = await member.create_dm()
         embed = discord.Embed(
             title="congratulations!!",
             discription=f"You have been unmuted from {member.guild.name}!!",
